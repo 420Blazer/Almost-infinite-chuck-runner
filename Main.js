@@ -46,6 +46,9 @@ var gameState = STATE_SPLASH;
 var score = 0;
 var lives = 3;
 
+var musicBackground;
+var sfxFire;
+
 var viewOffset = new Vector2();
 
 var tileset = document.createElement("img");
@@ -129,6 +132,25 @@ idx++;
 }
 }
 }
+
+musicBackground = new Howl(
+{
+	urls: ["background.ogg"],
+	loop:	true,
+	buffer: true,
+	volume: 0.5
+} );
+musicBackground.play();
+
+sfxFire = new Howl(
+{
+	urls: ["fireEffect.ogg"],
+	buffer: true,
+	volume: 1,
+	onend: function() {
+		isSfxPlaying = false;
+	}
+	});
 }
 
 var splashTimer = 3;
